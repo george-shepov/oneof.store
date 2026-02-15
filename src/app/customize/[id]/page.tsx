@@ -55,7 +55,7 @@ export default function CustomizationWizard({ params }: PageProps) {
 
   const handleSubmit = () => {
     // Navigate to checkout with customization data
-    const depositAmount = Math.max(tool.price * 0.2, 1000); // 20% deposit, minimum $10
+    const depositAmount = Math.max(tool.price * 0.2, 1000); // 20% deposit, minimum $10.00 (prices in cents)
     window.location.href = `/checkout?toolId=${tool.id}&type=customization&deposit=${depositAmount}`;
   };
 
