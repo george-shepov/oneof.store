@@ -17,47 +17,52 @@ A modern e-commerce platform for purchasing and customizing software development
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - Stripe account for payment processing
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/george-shepov/oneof.store.git
 cd oneof.store
 ```
 
-2. Install dependencies:
+1. Install dependencies:
+
 ```bash
 npm install
 ```
 
-3. Set up environment variables:
+1. Set up environment variables:
+
 ```bash
 cp .env.example .env
 ```
 
 Edit `.env` and add your Stripe keys:
-```
+
+```bash
 STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
-4. Run the development server:
+1. Run the development server:
+
 ```bash
 npm run dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Project Structure
 
-```
+```bash
 src/
-├── app/                    # Next.js app directory
+├── app/                   # Next.js app directory
 │   ├── api/               # API routes
 │   ├── checkout/          # Checkout page
 │   ├── customize/[id]/    # Customization wizard
@@ -73,6 +78,7 @@ src/
 ## Available Tools
 
 The platform includes sample tools in the following categories:
+
 - **Web** - E-Commerce platforms, project management tools, booking systems
 - **Mobile** - Fitness apps, cross-platform solutions
 - **Cloud** - CRM systems, AI chatbots, enterprise solutions
@@ -80,18 +86,19 @@ The platform includes sample tools in the following categories:
 ## Customization Wizard
 
 The wizard guides customers through 4 steps:
+
 1. **Project Overview** - Name, goals, timeline, budget
-2. **Technical Requirements** - Platforms, integrations, scalability
-3. **Design Preferences** - Style, colors, inspirations
-4. **Review & Submit** - Summary and deposit payment
+1. **Technical Requirements** - Platforms, integrations, scalability
+1. **Design Preferences** - Style, colors, inspirations
+1. **Review & Submit** - Summary and deposit payment
 
 ## Payment Flow
 
 1. Customer selects a tool or requests customization
-2. Redirected to checkout page
-3. Stripe checkout session created
-4. Secure payment via Stripe
-5. Success page with social sharing options
+1. Redirected to checkout page
+1. Stripe checkout session created
+1. Secure payment via Stripe
+1. Success page with social sharing options
 
 ## Deployment
 
@@ -104,6 +111,7 @@ Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ### Environment Variables
 
 Make sure to set these environment variables in your deployment:
+
 - `STRIPE_SECRET_KEY`
 - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
 - `NEXT_PUBLIC_APP_URL`
@@ -111,16 +119,19 @@ Make sure to set these environment variables in your deployment:
 ## Development
 
 ### Build
+
 ```bash
 npm run build
 ```
 
 ### Lint
+
 ```bash
 npm run lint
 ```
 
 ### Start Production Server
+
 ```bash
 npm start
 ```
@@ -147,6 +158,7 @@ npm start
 ## Learn More
 
 To learn more about Next.js:
+
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
