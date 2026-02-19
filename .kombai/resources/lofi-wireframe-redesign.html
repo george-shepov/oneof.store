@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneOf.Store Redesign - Wireframe</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: #fff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ccc;
+        }
+        .logo { font-weight: bold; font-size: 24px; }
+        .nav { display: flex; gap: 20px; }
+        
+        .hero {
+            width: 100%;
+            max-width: 1200px;
+            padding: 80px 20px;
+            text-align: center;
+            background: #f9f9f9;
+            border-bottom: 2px solid #eee;
+        }
+        .hero h1 { font-size: 48px; margin-bottom: 10px; }
+        .hero p { font-size: 18px; color: #666; max-width: 800px; margin: 0 auto 30px; }
+        
+        .island-nav {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            padding: 5px 20px;
+            display: inline-flex;
+            gap: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-top: -25px;
+            z-index: 10;
+        }
+        .island-nav button {
+            background: none;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .island-nav button.active { font-weight: bold; border-bottom: 2px solid #000; }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 60px 20px;
+        }
+        .bento-item {
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            background: #fff;
+            position: relative;
+        }
+        .bento-large { grid-column: span 8; height: 350px; }
+        .bento-small { grid-column: span 4; height: 350px; }
+        .bento-medium { grid-column: span 6; height: 300px; }
+        
+        .placeholder-img {
+            background: #eee;
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            border: 1px dashed #999;
+        }
+
+        .badge {
+            background: #eee;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .reuse-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #4CAF50;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            z-index: 20;
+        }
+        .new-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #FF9800;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            z-index: 20;
+        }
+
+        footer {
+            width: 100%;
+            padding: 40px;
+            background: #f5f5f5;
+            text-align: center;
+            border-top: 2px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">OneOf.Store</div>
+        <div class="nav">
+            <div style="position: relative;">
+                <span class="reuse-badge" title="src/components/ui/Button.tsx">[REUSE] Button</span>
+                <button style="padding: 8px 16px;">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Engineered with Precision</h1>
+        <p>Your one-stop shop for high-utility software tools. Purchase ready-made solutions or customize them to your exact specifications using our guided wizard.</p>
+        <div style="position: relative; display: inline-block;">
+            <span class="reuse-badge" title="src/components/ui/Button.tsx">[REUSE] Button</span>
+            <button style="padding: 15px 30px; font-size: 18px; font-weight: bold; background: #000; color: #fff;">Explore Gallery</button>
+        </div>
+    </section>
+
+    <div class="island-nav">
+        <button class="active">All</button>
+        <button>Web</button>
+        <button>Mobile</button>
+        <button>Cloud</button>
+    </div>
+
+    <div class="bento-grid">
+        <!-- Main Highlight -->
+        <div class="bento-item bento-large">
+            <span class="reuse-badge" title="src/components/ToolCard.tsx">[REUSE] ToolCard</span>
+            <div class="placeholder-img">[Image: Featured Tool 800x400]</div>
+            <div class="badge">E-Commerce</div>
+            <h3>E-Commerce Platform</h3>
+            <p>Full-featured store with Stripe integration.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                <span style="font-size: 24px; font-weight: bold;">$49.99</span>
+                <button style="padding: 10px 20px;">Buy Now</button>
+            </div>
+        </div>
+
+        <!-- Sidebar Feature -->
+        <div class="bento-item bento-small">
+            <span class="new-badge" title="src/components/StatCard.tsx">[NEW] StatCard</span>
+            <h3>Quick Stats</h3>
+            <div style="border-top: 1px solid #eee; padding-top: 10px; margin-top: 10px;">
+                <p><strong>12k+</strong> Downloads</p>
+                <p><strong>4.9/5</strong> Rating</p>
+                <p><strong>24/7</strong> Support</p>
+            </div>
+            <div class="placeholder-img" style="height: 100px; margin-top: 20px;">[Chart Placeholder]</div>
+        </div>
+
+        <!-- Secondary Items -->
+        <div class="bento-item bento-medium">
+            <span class="reuse-badge" title="src/components/ToolCard.tsx">[REUSE] ToolCard</span>
+            <div class="placeholder-img" style="height: 120px;">[Image: CRM 400x200]</div>
+            <div class="badge">Cloud</div>
+            <h3>CRM System</h3>
+            <p>Sales pipeline & lead tracking.</p>
+            <button style="width: 100%; margin-top: 10px;">View Details</button>
+        </div>
+
+        <div class="bento-item bento-medium">
+            <span class="reuse-badge" title="src/components/ToolCard.tsx">[REUSE] ToolCard</span>
+            <div class="placeholder-img" style="height: 120px;">[Image: Fitness 400x200]</div>
+            <div class="badge">Mobile</div>
+            <h3>Fitness App</h3>
+            <p>Track workouts and nutrition.</p>
+            <button style="width: 100%; margin-top: 10px;">View Details</button>
+        </div>
+    </div>
+
+    <section style="width: 100%; max-width: 1200px; padding: 60px 20px; border-top: 2px solid #eee;">
+        <h2 style="text-align: center; margin-bottom: 40px;">Why OneOf?</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;">
+            <div style="text-align: center;">
+                <div style="width: 60px; height: 60px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; position: relative;">
+                    <span class="new-badge" title="Lucide Icon Placeholder">[NEW] Icon</span>
+                    [I]
+                </div>
+                <h3>Guided Wizard</h3>
+                <p>Gather requirements perfectly.</p>
+            </div>
+            <div style="text-align: center;">
+                <div style="width: 60px; height: 60px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; position: relative;">
+                    <span class="new-badge" title="Lucide Icon Placeholder">[NEW] Icon</span>
+                    [I]
+                </div>
+                <h3>Stripe Secure</h3>
+                <p>Payments handled safely.</p>
+            </div>
+            <div style="text-align: center;">
+                <div style="width: 60px; height: 60px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; position: relative;">
+                    <span class="new-badge" title="Lucide Icon Placeholder">[NEW] Icon</span>
+                    [I]
+                </div>
+                <h3>Cloud Native</h3>
+                <p>Scalable cloud infrastructure.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 OneOf.Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>

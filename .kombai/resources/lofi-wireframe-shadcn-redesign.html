@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneOf.Store Redesign - Shadcn Style</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fff;
+            color: #0f172a; /* shadcn slate-900 */
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid #e2e8f0; /* slate-200 */
+            height: 64px;
+            display: flex;
+            align-items: center;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .logo { font-weight: 700; font-size: 1.25rem; letter-spacing: -0.025em; }
+        .nav-links { display: flex; gap: 24px; font-size: 0.875rem; font-weight: 500; color: #64748b; }
+        .nav-links a:hover { color: #0f172a; }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .hero h1 { font-size: 3.75rem; font-weight: 800; letter-spacing: -0.05em; margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.25rem; color: #64748b; max-width: 700px; margin: 0 auto 2.5rem; }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            height: 40px;
+            padding: 0 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border: 1px solid transparent;
+        }
+        .btn-primary { background: #0f172a; color: #fff; }
+        .btn-primary:hover { background: #1e293b; }
+        .btn-outline { border: 1px solid #e2e8f0; background: #fff; color: #0f172a; }
+        .btn-outline:hover { background: #f8fafc; }
+
+        /* Gallery Section */
+        .gallery { padding: 64px 0; }
+        .section-header { margin-bottom: 32px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .section-header h2 { font-size: 1.875rem; font-weight: 700; margin: 0; letter-spacing: -0.025em; }
+
+        /* Tabs */
+        .tabs { display: flex; background: #f1f5f9; padding: 4px; border-radius: 8px; margin-bottom: 32px; width: fit-content; }
+        .tab { padding: 6px 12px; font-size: 0.875rem; font-weight: 500; border-radius: 6px; cursor: pointer; color: #64748b; }
+        .tab.active { background: #fff; color: #0f172a; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+
+        /* Grid */
+        .tool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        
+        /* Card */
+        .card {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+            transition: box-shadow 0.2s;
+            position: relative;
+        }
+        .card:hover { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .card-image { aspect-ratio: 16/9; background: #f8fafc; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: center; }
+        .card-content { padding: 20px; }
+        .card-tag { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #3b82f6; margin-bottom: 8px; display: block; }
+        .card-title { font-size: 1.125rem; font-weight: 700; margin: 0 0 8px; }
+        .card-desc { font-size: 0.875rem; color: #64748b; margin-bottom: 16px; line-height: 1.6; }
+        .card-footer { padding: 0 20px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .card-price { font-size: 1.25rem; font-weight: 700; }
+
+        /* Reusable Badges */
+        .reuse-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #22c55e;
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            z-index: 10;
+        }
+        .new-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #f97316;
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            z-index: 10;
+        }
+
+        /* Footer */
+        footer { border-top: 1px solid #e2e8f0; padding: 48px 0; background: #f8fafc; text-align: center; font-size: 0.875rem; color: #64748b; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">OneOf.Store</div>
+            <nav class="nav-links">
+                <a href="#">Solutions</a>
+                <a href="#">Pricing</a>
+                <a href="#">Company</a>
+            </nav>
+            <div style="position: relative;">
+                <span class="reuse-badge" title="src/components/ui/Button.tsx">[REUSE] Button</span>
+                <button class="btn btn-primary">Start Building</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Build your next idea <span style="color: #64748b">faster.</span></h1>
+            <p>High-utility web, mobile, and cloud tools tailored for software teams. Purchase ready-made or customize in minutes.</p>
+            <div style="display: flex; gap: 12px; justify-content: center;">
+                <button class="btn btn-primary">Browse Tools</button>
+                <button class="btn btn-outline">How it Works</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <h2>Our Tools</h2>
+                    <p style="color: #64748b; font-size: 0.875rem; margin-top: 4px;">Explore our collection of production-ready components.</p>
+                </div>
+            </div>
+
+            <div style="position: relative; width: fit-content;">
+                <span class="new-badge" title="Shadcn Tabs Component">[NEW] Tabs</span>
+                <div class="tabs">
+                    <div class="tab active">All Tools</div>
+                    <div class="tab">Web Apps</div>
+                    <div class="tab">Mobile</div>
+                    <div class="tab">Cloud</div>
+                </div>
+            </div>
+
+            <div class="tool-grid">
+                <!-- Tool 1 -->
+                <div class="card">
+                    <span class="reuse-badge" title="src/components/ToolCard.tsx">[REUSE] ToolCard</span>
+                    <div class="card-image">
+                        <div style="font-size: 2.5rem; font-weight: 800; color: #e2e8f0;">[E]</div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Web App</span>
+                        <h3 class="card-title">E-Commerce Platform</h3>
+                        <p class="card-desc">Full-featured store with inventory, payments, and admin dashboard.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-price">$49.99</span>
+                        <button class="btn btn-outline btn-sm">Details</button>
+                    </div>
+                </div>
+
+                <!-- Tool 2 -->
+                <div class="card">
+                    <span class="reuse-badge" title="src/components/ToolCard.tsx">[REUSE] ToolCard</span>
+                    <div class="card-image">
+                        <div style="font-size: 2.5rem; font-weight: 800; color: #e2e8f0;">[F]</div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Mobile</span>
+                        <h3 class="card-title">Fitness Tracker</h3>
+                        <p class="card-desc">Workout plans, nutrition logs, and real-time social features.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-price">$79.99</span>
+                        <button class="btn btn-outline btn-sm">Details</button>
+                    </div>
+                </div>
+
+                <!-- Tool 3 -->
+                <div class="card">
+                    <span class="reuse-badge" title="src/components/ToolCard.tsx">[REUSE] ToolCard</span>
+                    <div class="card-image">
+                        <div style="font-size: 2.5rem; font-weight: 800; color: #e2e8f0;">[C]</div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Cloud</span>
+                        <h3 class="card-title">CRM System</h3>
+                        <p class="card-desc">Sales pipeline, lead tracking, and automated email campaigns.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-price">$89.99</span>
+                        <button class="btn btn-outline btn-sm">Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 80px 0; background: #fafafa; border-top: 1px solid #f1f5f9;">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: 2.25rem; font-weight: 800; letter-spacing: -0.05em; margin-bottom: 32px;">Why OneOf?</h2>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: left;">
+                    <div style="position: relative;">
+                        <span class="new-badge" title="Lucide Icon">[NEW] Icon</span>
+                        <div style="width: 40px; height: 40px; background: #f1f5f9; border-radius: 8px; margin-bottom: 16px;"></div>
+                        <h4 style="font-weight: 700; margin-bottom: 8px;">Wizard Driven</h4>
+                        <p style="font-size: 0.875rem; color: #64748b;">Step-by-step customization for complex requirements.</p>
+                    </div>
+                    <div style="position: relative;">
+                        <span class="new-badge" title="Lucide Icon">[NEW] Icon</span>
+                        <div style="width: 40px; height: 40px; background: #f1f5f9; border-radius: 8px; margin-bottom: 16px;"></div>
+                        <h4 style="font-weight: 700; margin-bottom: 8px;">Stripe Ready</h4>
+                        <p style="font-size: 0.875rem; color: #64748b;">Instant licensing and secure deposits for custom work.</p>
+                    </div>
+                    <div style="position: relative;">
+                        <span class="new-badge" title="Lucide Icon">[NEW] Icon</span>
+                        <div style="width: 40px; height: 40px; background: #f1f5f9; border-radius: 8px; margin-bottom: 16px;"></div>
+                        <h4 style="font-weight: 700; margin-bottom: 8px;">Cloud Scale</h4>
+                        <p style="font-size: 0.875rem; color: #64748b;">Built on modern stacks like Next.js and AWS/Vercel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OneOf.Store. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
